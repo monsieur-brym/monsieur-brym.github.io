@@ -1,58 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Dungeons & Dragons</title>
-  <link rel="stylesheet" href="dungeonthemes.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Dungeons and Dragons website is a personal appreciation piece on benefits, history, and peripheral information regarding Dungeons & Dragons.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
 </head>
-
 <body>
-  <div id="wrapper">
-    <header>
-        <h1><a href="index.html">DUNGEONS & DRAGONS</a></h1>
-        <p>infinite possibilities</p>
-    </header>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="whatisdnd.html">WHAT IS D&D?</a></li>
-        <li><a href="howtoplay.html">HOW TO PLAY</a></li>
-        <li><a href="history.html">HISTORY</a></li>
-        <li><a href="aboutme.html">ABOUT ME</a></li>
-      </ul>
-    </nav>
+    <section class="container">
+        <div class="content">
+            <h1>Scroll to Begin</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
 
-    <div id="banner">
-      <video controls>
-        <source src="dndexplained.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <section class="container">
+        <div class="content">
+            <h1>Step 1</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
 
-    <main>
-      <h2>ROLL FOR INITIATIVE, ADVENTURER</h2>
-      <p>Will you fight for good, or evil? For honor, or for greed? The choice falls in your hands when you are at the table. That is, <em> if the dice are on your side.</em></p>
-      <p>When beginning to play the best tabletop game ever, it can be difficult to know where to start. Please enjoy the resourses on this website as a map for your journey. If you need a place to start, navigate to the "How To" section. If you are interested in the history of D&D, what it is, or my experiences with the game; we have all of that as well!</p>
-      <div id="contact">
-        <span class="resort">Bryce Manhardt</span>
-        <br>
-        55555 E Five St.
-        <br>
-        Tempe, AZ 55555
-        <br><br>
-        888-555-5555
-        <br><br>
-      </div>
-    </main>
+    <section class="container">
+        <div class="content">
+            <h1>Step 2</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
 
-    <footer>
-      Made by Bryce Manhardt<br><a href="mailto:bryce@manhardt.com">bryce@manhardt.com</a>
-    </footer>
-  </div>
+    <section class="container">
+        <div class="content">
+            <h1>Step 3</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 4</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
+
+    <div id="set-height"></div>
+
+    <video id="v0" tabindex="0", autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="fingers.mp4"></source>
+    </video>
+    <script src="sticky.js"></script>
+    <script>
+
+        enterView({
+            selector: 'section',
+            enter: function(el) {
+                el.classList.add('entered');
+            }
+        })
+
+        var frameNumber = 0, // start video at frame 0
+        // lower numbers = faster playback
+        playbackConst = 1000,
+        // get page height from video duration
+        setHeight = document.getElementById("set-height"),
+        // select video element
+        vid = document.getElementById('v0');
+        // var vid = $('#v0')[0]; // jquery option
+
+    // dynamically set the page height according to video length
+    vid.addEventListener('loadedmetadata', function() {
+    setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+    });
+
+
+    // Use requestAnimationFrame for smooth playback
+    function scrollPlay(){
+    var frameNumber  = window.pageYOffset/playbackConst;
+    vid.currentTime  = frameNumber;
+    window.requestAnimationFrame(scrollPlay);
+    }
+
+    window.requestAnimationFrame(scrollPlay);
+
+    </script>
 </body>
-
 </html>
